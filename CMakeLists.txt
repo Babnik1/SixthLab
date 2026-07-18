@@ -11,4 +11,4 @@ set( SOURCES
 
 add_executable( matrix ${SOURCES} )
 
-set_target_properties( bulk PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR} )
+set_target_properties( matrix PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR} )
