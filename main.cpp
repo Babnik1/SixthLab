@@ -184,21 +184,22 @@ public:
 
 int main()
 {
-    Matrix< int, -1 > matrix;  
 
-    assert( matrix.size() == 0 ); 
+    Matrix< int, -1 > matrixTest;  
+
+    assert( matrixTest.size() == 0 ); 
     
-    auto a = matrix[ 0 ][ 0 ];  
+    auto a = matrixTest[ 0 ][ 0 ];  
 
     assert( a == -1 );  
-    assert( matrix.size() == 0 );  
+    assert( matrixTest.size() == 0 );  
 
-    matrix[ 100 ][ 100 ] = 314;  
+    matrixTest[ 100 ][ 100 ] = 314;  
 
-    assert( matrix[ 100 ][ 100 ] == 314 );  
-    assert( matrix.size() == 1 );  
+    assert( matrixTest[ 100 ][ 100 ] == 314 );  
+    assert( matrixTest.size() == 1 );  
 
-    for( auto c : matrix )  
+    for( auto c : matrixTest )  
     {  
         int x;  
         int y;  
@@ -208,6 +209,43 @@ int main()
 
         std::cout << x << " " << y << " " << v << std::endl;  
     } 
+
+
+
+    Matrix< int, 0 > matrix;
+
+    for ( int i = 0; i < 10; ++i )
+    {
+        matrix[ i ][ i ] = i;
+    }
+
+    for ( int i = 0; i < 10; ++i )
+    {
+        matrix[ i ][ 9 - i ] = 9 - i;
+    }
+
+    for ( int i = 1; i <= 8; ++i) 
+    {
+        for ( int j = 1; j <= 8; ++j )
+        {
+            std::cout << matrix[ i ][ j ];
+
+            if ( j != 8 )
+                std::cout << " ";
+        }
+
+        std::cout << std::endl;
+    }
+
+    std::cout << "Occupied: " << matrix.size() << std::endl;
+
+    for ( const auto &cell : matrix )
+    { 
+        int x, y, value;
+        std::tie( x, y, value ) = cell;
+
+        std::cout << "[" << x << ", " << y << "] = " << value << std::endl;
+    }
 
     return 0;
 }
